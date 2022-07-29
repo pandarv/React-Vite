@@ -1,41 +1,74 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+header {
+	background-color: #f55a5a;
+	text-align: center;
+	display: flex;
+	place-items: center;
+	gap: 1rem;
+	padding: 0.8rem;
+	/* border: 1px solid saddlebrown; */
+	margin-bottom: 2rem;
+}
+header > .logo--img {
+	width: 2.5rem;
+	margin-left: auto;
+}
+header > h2 {
+	color: #fff;
+	margin-right: auto;
+}
+p,
+h4,
+a {
+	font-size: 0.8rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+h4 {
+	margin-right: 16px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+a {
+	color: grey;
+	text-decoration: none;
+	border-bottom: grey 1px solid;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+	font-size: 1.6rem;
+	margin-bottom: 0.8rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+article {
+	width: 500px;
+	margin: 2rem auto;
+	display: flex;
+	align-items: center;
+	gap: 1.2rem;
+}
+.location--img {
+	width: 125px;
+	height: 168px;
+	object-fit: cover;
+	border-radius: 8px;
 }
 
-.card {
-  padding: 2em;
+.google--map {
+	display: flex;
+	align-items: center;
 }
-
-.read-the-docs {
-  color: #888;
+.location--icon {
+	width: 8px;
+	margin-right: 4px;
+}
+.bold {
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+hr {
+	width: 60%;
+	margin: 0 auto;
+	height: 2px;
+	border-width: 0px;
+	background-color: rgb(243 243 243);
 }
