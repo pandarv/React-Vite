@@ -1,41 +1,63 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+body {
+    display: flex;
+    place-items: center;
+    min-height: 100vh;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    padding: 0.6em;
+    border-bottom: 4px solid burlywood;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+ul {
+    width: 80%;
+    /* padding: 1em; */
+    list-style-position: inside;
+    margin: 0 auto;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li {
+    /* list-style-type: none; */
+    width: 100%;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    color: hsla(39, 100%, 50%, 0.6);
+    position: relative;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+li span {
+    position: absolute;
+    margin-left: 0.3rem;
 }
-
-.card {
-  padding: 2em;
+li::marker {
+    content: "\2717   ";
+    /* font-size: 1rem; */
+    /* font-size: 150%; */
 }
-
-.read-the-docs {
-  color: #888;
+li.valid::marker {
+    content: "\2713   ";
+}
+li.valid {
+    color: rgba(172, 255, 47, 0.6);
+}
+input {
+    display: block;
+    padding: 0.8em;
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-inline: auto;
+}
+form {
+    background-color: hsl(208, 100%, 97%, 0.1);
+    padding: 3em;
+    border-end-end-radius: 0.8rem;
+    border-end-start-radius: 0.8rem;
+}
+form > div:first-child {
+    /* border: 1px solid burlywood; */
+    margin-bottom: 2rem;
 }
