@@ -2,18 +2,18 @@ import React from "react";
 import { useState } from "react";
 
 const pattern = {
-    digit: /[\d]+/g,
-    lowerLetter: /[a-z]/g,
-    capLetter: /[A-Z]/g,
-    spacialChar: /[?@#!$]/g,
+    //     digit: /[\d]+/g,
+    //     lowerLetter: /[a-z]/g,
+    //     capLetter: /[A-Z]/g,
+    //     spacialChar: /[?@#!$]/g,
+    userName: [/[a-zA-Z]/g, /[\d]+/g],
 };
 const LoginForm = () => {
     const [formState, setFormState] = useState({
         userName: "",
         password: "",
     });
-    let newUserName = formState.userName.replace(/\s/g, "");
-    console.log(newUserName.trim());
+
     const handleChange = (e) => {
         // console.log(e.target.name + ": " + e.target.value);
         // console.log(e.target.type);
@@ -27,6 +27,12 @@ const LoginForm = () => {
     };
     const submitHandle = (e) => {
         e.preventDefault();
+
+        console.log(formState);
+        setFormState({
+            userName: "",
+            password: "",
+        });
     };
     return (
         <form onSubmit={submitHandle}>
@@ -38,7 +44,12 @@ const LoginForm = () => {
                     <li className={/[a-zA-Z]/g.test(formState.userName) && /[\d]+/g.test(formState.userName) ? "valid" : ""}>
                         Mixture of letters and numbers
                     </li>
-                    <li className={/[_|.|-]/g.test(formState.userName) && /[\d\w.-]/g.test(formState.userName) ? "valid" : ""}>Optional of .-_ .</li>
+                    {/* <li className={pattern.userName[0].test(formState.userName) && pattern.userName[1].test(formState.userName) ? "valid" : ""}>
+                        Mixture of letters and numbers
+                    </li> */}
+                    <li className={/[_|.|-]/g.test(formState.userName) && /[\d\w.-]/g.test(formState.userName) ? "valid" : ""}>
+                        Optional use of .-_ .
+                    </li>
                 </ul>
             </div>
             <div>
