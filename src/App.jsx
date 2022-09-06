@@ -1,34 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+// import reactLogo from "./assets/react.svg";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+// function App() {
+// 	const [monsters, setMonsters] = useState([]);
+// 	const [letter, setLetter] = useState("");
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+// 	useEffect(() => {
+// 		fetch("https://jsonplaceholder.typicode.com/users")
+// 			.then((res) => res.json())
+// 			.then((data) => setMonsters(data));
+// 	}, []);
+
+// 	const filteredArr = monsters.filter((item) => {
+// 		return item.name.toLowerCase().includes(letter);
+// 	});
+// 	const onChangeHandle = (e) => {
+// 		const searchStr = e.target.value.toLowerCase();
+// 		setLetter(searchStr);
+// 	};
+
+// 	return (
+// 		<div className="App">
+// 			<input type="search" name="search" id="search--id" placeholder="Search..." onChange={onChangeHandle} />
+// 			{filteredArr.map((x) => {
+// 				return <h1 key={x.id}>{x.name}</h1>;
+// 			})}
+// 		</div>
+// 	);
+// }
+
+import React, { Component } from "react";
+
+export class App extends Component {
+	constructor() {
+		super();
+		this.state = {
+			monsters: [],
+			searchData: "",
+		};
+	}
+	componentDidMount() {
+		fetch("https://jsonplaceholder.typicode.com/users")
+			.then((res) => res.json())
+			.then((data) => {
+				this.setState(() => {
+					return { monsters: data };
+				});
+			});
+	}
+	onSearchChangeHandle(element) {
+		const searchData = element.target.value.toLowerCase();
+		this.setState(() => {
+			return { searchData };
+		});
+	}
+
+	render() {
+		const newArr = this.state.monsters.filter((item) => {
+			return item.name.toLowerCase().includes(this.state.searchData);
+		});
+		return (
+			<div>
+				<input type="search" name="search" id="search--id" placeholder="Search..." onChange={this.onSearchChangeHandle} />
+				{newArr.map((item) => (
+					<h1 key={item.id}>{item.name}</h1>
+				))}
+			</div>
+		);
+	}
 }
 
-export default App
+export default App;
